@@ -60,10 +60,10 @@ export default function Header() {
     <>
       <header className="bg-background/80 backdrop-blur-md border-b border-border sticky top-0 z-40 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-3 sm:gap-8">
             <Link
               href="/"
-              className="text-xl font-extrabold tracking-tight flex items-center"
+              className="text-lg sm:text-xl font-extrabold tracking-tight flex items-center mr-1 sm:mr-0"
             >
               <span className="text-blue-600 dark:text-blue-400">
                 ticketmaster
@@ -91,7 +91,6 @@ export default function Header() {
               </Link>
             </nav>
           </div>
-
           <div className="flex items-center gap-3">
             {/* Theme Toggle Button & Dropdown */}
             <div className="relative" ref={themeDropdownRef}>
@@ -210,9 +209,9 @@ export default function Header() {
             ) : (
               <button
                 onClick={() => setIsAuthModalOpen(true)}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-5 py-2 rounded-xl text-sm font-medium transition shadow-sm shadow-primary/25 cursor-pointer"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-5 py-2 rounded-xl text-sm font-medium transition shadow-sm shadow-primary/25 cursor-pointer whitespace-nowrap"
               >
-                Sign In / Register
+                Sign In
               </button>
             )}
 
