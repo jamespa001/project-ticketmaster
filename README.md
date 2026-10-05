@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Ticketmaster Clone
 
-## Getting Started
+A full-stack event discovery and ticketing platform inspired by Ticketmaster, built with Next.js App Router, Tailwind CSS, Firebase, and the Ticketmaster Discovery API.
 
-First, run the development server:
+[Key Features]
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Event Discovery & Search: Real-time event search powered by the Ticketmaster Discovery API with robust keyword and location-based filtering.
+- Dynamic Event Details: Immersive event pages featuring date/time formatting, venue details, interactive order summaries, and deterministic pricing fallbacks.
+- Secure Authentication: User sign-in and session management powered by Firebase Authentication.
+- Seamless Checkout: End-to-end payment processing integrated with Stripe Checkout.
+- Responsive Architecture: Built mobile-first with a modern, high-converting two-column layout styled using Tailwind CSS.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[Tech Stack]
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Frontend & Framework: Next.js (App Router), React, Tailwind CSS
+- APIs & Services: Ticketmaster Discovery API, Stripe API
+- Backend & Auth: Firebase Auth & Firestore
+- Deployment: Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+[Project Structure]
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+src/
+├── app/ # Next.js App Router (pages and API endpoints)
+│ ├── api/ # Backend API routes (Stripe checkout, Event handlers)
+│ ├── checkout/success/ # Order success & confirmation page
+│ ├── events/ # Dynamic event detail & multi-step checkout pages
+│ ├── profile/ # User account & profile management
+│ ├── search/ # Event discovery & keyword search filters
+│ ├── tickets/ # User ticket view & management
+│ ├── layout.tsx # Root layout with global styling & providers
+│ └── page.tsx # Home / landing page
+├── components/ # Reusable UI components (Modals, Headers, Cards)
+├── context/ # React Context providers (Auth, Theme management)
+└── lib/ # External service configuration & utilities (Firebase)
