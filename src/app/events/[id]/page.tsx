@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import EventLocation from '@/components/EventLocation';
+import AuthModal from '@/components/AuthModal';
 
 interface EventDetail {
   id: string;
@@ -56,7 +57,7 @@ export default function EventDetailPage({
   } | null>(null);
   const [ticketCount, setTicketCount] = useState<number>(1);
   const [error, setError] = useState('');
-
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   useEffect(() => {
     async function fetchEventDetails() {
       try {
@@ -226,7 +227,7 @@ export default function EventDetailPage({
 
   const handleCheckoutClick = () => {
     if (!user) {
-      alert('Please sign in to proceed with ticket checkout.');
+      setIsAuthModalOpen(true);
       return;
     }
     const section = selectedSection?.name || 'General Admission';
@@ -464,6 +465,12 @@ export default function EventDetailPage({
             )}
           </div>
         </div>
+
+        {/* Authentication Modal */}
+        <AuthModal
+          isOpen={isAuthModalOpen}
+          onClose={() => setIsAuthModalOpen(false)}
+        />
       </div>
     </main>
   );
