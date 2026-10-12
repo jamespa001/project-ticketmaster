@@ -159,7 +159,7 @@ export default function AdminDashboard() {
       <div className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center p-6">
         <div className="w-10 h-10 border-4 border-sky-500/20 border-t-sky-500 rounded-full animate-spin mb-4"></div>
         <p className="text-sm font-medium text-gray-400 tracking-wide">
-          Verifying admin access...
+          Loading dashboard...
         </p>
       </div>
     );
