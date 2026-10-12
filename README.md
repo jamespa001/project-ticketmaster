@@ -17,28 +17,30 @@ A full-stack event discovery and ticketing platform inspired by Ticketmaster, bu
 - Backend & Auth: Firebase Auth & Firestore
 - Deployment: Vercel
 
-### [Project Structure]
+### 📁 Project Structure
 
+```text
 public/
 └── reports/
-└── test-results/ # Vitest JSON test execution outputs for the Admin Dashboard
+    └── test-results/           # Vitest JSON test execution outputs for the Admin Dashboard
 src/
-├── **tests**/ # Integration & end-to-end test suites (auth-gate, booking, search)
-├── app/ # Next.js App Router (pages and API endpoints)
-│ ├── admin/ # Tiered test reporting & quality monitoring dashboard
-│ ├── api/ # Backend API routes (Stripe checkout, Event handlers)
-│ ├── checkout/success/ # Order success & confirmation page
-│ ├── events/ # Dynamic event detail & multi-step checkout pages
-│ ├── profile/ # User account & profile management
-│ ├── search/ # Event discovery & keyword search filters
-│ ├── tickets/ # User ticket view & management
-│ ├── globals.css # Global Tailwind styles
-│ ├── layout.tsx # Root layout with global styling & providers
-│ └── page.tsx # Home / landing page
-├── components/ # Reusable UI components & corresponding unit tests (.test.tsx)
-├── context/ # React Context providers (Auth, Theme management)
-├── lib/ # External service configuration & utilities (Firebase, userService)
-└── test/ # Test environment setup & global mocks
+├── __tests__/                  # Integration & end-to-end test suites (auth-gate, booking, search)
+├── app/                        # Next.js App Router (pages and API endpoints)
+│   ├── admin/                  # Tiered test reporting & quality monitoring dashboard
+│   ├── api/                    # Backend API routes (Stripe checkout, Event handlers)
+│   ├── checkout/success/       # Order success & confirmation page
+│   ├── events/                 # Dynamic event detail & multi-step checkout pages
+│   ├── profile/                # User account & profile management
+│   ├── search/                 # Event discovery & keyword search filters
+│   ├── tickets/                # User ticket view & management
+│   ├── globals.css             # Global Tailwind styles
+│   ├── layout.tsx              # Root layout with global styling & providers
+│   └── page.tsx                # Home / landing page
+├── components/                 # Reusable UI components & corresponding unit tests (.test.tsx)
+├── context/                    # React Context providers (Auth, Theme management)
+├── lib/                        # External service configuration & utilities (Firebase, userService)
+└── test/                       # Test environment setup & global mocks
+```
 
 ### 🛡️ Admin Dashboard & Quality Monitoring
 
