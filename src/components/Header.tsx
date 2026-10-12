@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { useTheme } from '@/context/ThemeContext';
+import { db } from '@/lib/firebase';
+import { doc, getDoc } from 'firebase/firestore';
 import AuthModal from './AuthModal';
 
 export default function Header() {
@@ -13,11 +15,36 @@ export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [themeDropdownOpen, setThemeDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const themeDropdownRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Check if logged-in user has admin role in Firestore
+  useEffect(() => {
+    let isMounted = true;
+    async function checkAdminRole() {
+      if (!user) {
+        if (isMounted) setIsAdmin(false);
+        return;
+      }
+      try {
+        const userDocRef = doc(db, 'users', user.uid);
+        const userDoc = await getDoc(userDocRef);
+        if (isMounted) {
+          setIsAdmin(userDoc.exists() && userDoc.data()?.role === 'admin');
+        }
+      } catch (err) {
+        if (isMounted) setIsAdmin(false);
+      }
+    }
+    checkAdminRole();
+    return () => {
+      isMounted = false;
+    };
+  }, [user]);
 
   // Close dropdowns when clicking outside
   useEffect(() => {
@@ -89,6 +116,14 @@ export default function Header() {
               >
                 Arts & Theater
               </Link>
+              {isAdmin && (
+                <Link
+                  href="/admin"
+                  className="text-sky-500 hover:text-sky-400 font-semibold transition flex items-center gap-1.5 px-2 py-1 bg-sky-500/10 rounded-lg border border-sky-500/20"
+                >
+                  <span>⚙️</span> Admin
+                </Link>
+              )}
             </nav>
           </div>
           <div className="flex items-center gap-3">
@@ -180,6 +215,11 @@ export default function Header() {
                       <p className="text-xs font-semibold text-foreground truncate mt-0.5">
                         {user.email}
                       </p>
+                      {isAdmin && (
+                        <span className="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-bold bg-sky-500/20 text-sky-400 border border-sky-500/30">
+                          ADMIN
+                        </span>
+                      )}
                     </div>
 
                     <div className="py-1 px-1">
@@ -190,6 +230,15 @@ export default function Header() {
                       >
                         <span>🎟</span> My Profile
                       </Link>
+                      {isAdmin && (
+                        <Link
+                          href="/admin"
+                          onClick={() => setDropdownOpen(false)}
+                          className="w-full text-left px-3 py-2.5 text-xs text-sky-400 hover:bg-sky-500/10 rounded-lg flex items-center gap-2.5 transition font-semibold"
+                        >
+                          <span>⚙️</span> Admin Dashboard
+                        </Link>
+                      )}
                     </div>
 
                     <div className="border-t border-border pt-1 px-1">
@@ -276,6 +325,16 @@ export default function Header() {
               >
                 <span>🎭</span> Arts & Theater
               </Link>
+
+              {isAdmin && (
+                <Link
+                  href="/admin"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-sky-400 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/20 px-4 py-2.5 rounded-xl transition flex items-center gap-3 font-semibold"
+                >
+                  <span>⚙️</span> Admin Dashboard
+                </Link>
+              )}
             </nav>
           </div>
         )}

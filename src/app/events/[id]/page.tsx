@@ -42,9 +42,10 @@ interface EventDetail {
 export default function EventDetailPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string }> | { id: string };
 }) {
-  const { id } = use(params);
+  const resolvedParams = params instanceof Promise ? use(params) : params;
+  const id = resolvedParams.id;
   const { user } = useAuth();
   const router = useRouter();
 
@@ -58,6 +59,7 @@ export default function EventDetailPage({
   const [ticketCount, setTicketCount] = useState<number>(1);
   const [error, setError] = useState('');
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+
   useEffect(() => {
     async function fetchEventDetails() {
       try {

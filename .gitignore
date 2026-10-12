@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Test report archives
+public/reports/test-results/*.json
+!public/reports/test-results/latest.json
