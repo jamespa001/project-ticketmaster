@@ -57,3 +57,33 @@ To explore the admin features locally or in production, you can sign in using th
 - **Email**: `admin@tmclone.com`
 - **Password**: `admin@tampa.FL`
 - **Security**: Enforces strict Firestore role verification (`users/{uid}` with `role: "admin"`), automatically redirecting unauthorized users.
+
+## ♿ Accessibility & Quality Assurance (WCAG 2.1 AA)
+
+This application was engineered and audited to meet strict WCAG 2.1 AA accessibility standards, ensuring full screen-reader support, keyboard navigation, and high-contrast usability across event search results, filtering tools, and interactive booking flows.
+
+### Audit Summary
+
+- **Lighthouse Accessibility Score:** 100% 🟢
+- **axe DevTools Violations:** Reduced down to **0 violations**.
+
+### Key Accessibility Enhancements
+
+- **High-Contrast Theme Adaptation:** Refined text contrast and muted palette tokens against the dark theme to consistently exceed the 4.5:1 ratio requirement.
+- **Keyboard Navigation & Focus States:** Verified robust tab-indexing, visible focus rings, and full `Enter`/`Space` activation across event cards, search inputs, and pagination controls.
+- **Screen Reader & ARIA Support:** Added descriptive `aria-label` attributes to icon-only buttons (such as bookmarks and filters), explicit `alt` text for artist banners, and live region announcements for dynamic search results.
+
+---
+
+### axe DevTools Audit: Before & After
+
+| Before Accessibility Refactor                                                | After WCAG 2.1 AA Compliance                                     |
+| :--------------------------------------------------------------------------- | :--------------------------------------------------------------- |
+| ![axe DevTools Before](./public/screenshots/axeDev.before.png)               | ![axe DevTools After](./public/screenshots/axeDev.after.png)     |
+| _Identified contrast adjustments, missing icon labels, and focus ring gaps._ | _Zero errors or warnings — fully verified and production-ready._ |
+
+### Lighthouse Accessibility Score
+
+<p align="center">
+  <img src="./public/screenshots/Lighthouse.after.png" alt="Ticketmaster Lighthouse Accessibility Score 100 percent" width="600" />
+</p>
