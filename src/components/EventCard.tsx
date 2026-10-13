@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export interface EventItem {
   id: string;
@@ -38,12 +39,14 @@ export function EventCard({ event }: EventCardProps) {
       className="bg-card border border-border hover:border-primary/50 shadow-md hover:shadow-xl rounded-2xl overflow-hidden transition group flex flex-col cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
     >
       <div className="relative h-48 overflow-hidden bg-muted">
-        <img
+        <Image
           src={imageUrl}
           alt={event?.name ?? 'Event image'}
-          className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover group-hover:scale-105 transition duration-500"
         />
-        <div className="absolute top-3 right-3 bg-background/80 backdrop-blur-md border border-border text-[10px] font-bold px-2.5 py-1 rounded-full text-primary">
+        <div className="absolute top-3 right-3 bg-background/80 backdrop-blur-md border border-border text-[10px] font-bold px-2.5 py-1 rounded-full text-primary z-10">
           {event.classifications?.[0]?.genre?.name || 'Live Event'}
         </div>
       </div>

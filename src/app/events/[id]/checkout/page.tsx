@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import EventLocation from '@/components/EventLocation';
+import Image from 'next/image';
 
 interface EventDetail {
   id: string;
@@ -203,11 +204,16 @@ function CheckoutContent({ params }: { params: Promise<{ id: string }> }) {
         <div className="md:col-span-2 space-y-6">
           {/* Event Card */}
           <div className="bg-card border border-border rounded-2xl p-6 shadow-xl flex items-center gap-5">
-            <img
-              src={imageUrl}
-              alt={event?.name || 'Event'}
-              className="w-20 h-20 rounded-xl object-cover border border-border"
-            />
+            <div className="relative w-20 h-20 shrink-0">
+              <Image
+                src={imageUrl}
+                alt={event?.name || 'Event'}
+                fill
+                sizes="80px"
+                className="rounded-xl object-cover border border-border"
+                priority={true}
+              />
+            </div>
             <div>
               <span className="text-[10px] text-primary uppercase font-bold tracking-wider">
                 Verified Event

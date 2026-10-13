@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   Search,
@@ -263,15 +264,17 @@ function EventSearchContent() {
                 >
                   {/* Card Image Banner */}
                   <div className="relative h-48 w-full overflow-hidden bg-card">
-                    <img
+                    <Image
                       src={
                         event.images?.[0]?.url ||
                         'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80'
                       }
                       alt={event?.name ?? 'Event promotional image'}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-80" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-80 z-10 pointer-events-none" />
 
                     {genre && (
                       <span className="absolute top-3 left-3 px-3 py-1 bg-card/80 backdrop-blur-md border border-muted text-blue-400 text-xs font-semibold rounded-full">

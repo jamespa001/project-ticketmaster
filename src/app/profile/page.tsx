@@ -6,6 +6,7 @@ import { useTheme } from '@/context/ThemeContext';
 import { db } from '@/lib/firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface Ticket {
   id: string;
@@ -195,11 +196,15 @@ export default function ProfilePage() {
                   className="bg-card border border-muted rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:border-muted-foreground transition shadow-md"
                 >
                   <div className="flex items-center gap-4">
-                    <img
-                      src={ticket.image || 'https://via.placeholder.com/150'}
-                      alt={ticket?.eventName ?? 'Ticket thumbnail'}
-                      className="w-16 h-16 rounded-xl object-cover border border-muted"
-                    />
+                    <div className="relative w-16 h-16 shrink-0">
+                      <Image
+                        src={ticket.image || 'https://via.placeholder.com/150'}
+                        alt={ticket?.eventName ?? 'Ticket thumbnail'}
+                        fill
+                        sizes="64px"
+                        className="rounded-xl object-cover border border-muted"
+                      />
+                    </div>
                     <div className="space-y-1">
                       <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded">
                         Confirmed Pass

@@ -7,6 +7,7 @@ import { useAuth } from '@/context/AuthContext';
 import { db } from '@/lib/firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import EventLocation from '@/components/EventLocation';
+import Image from 'next/image';
 
 interface EventDetail {
   id: string;
@@ -163,11 +164,16 @@ function TicketConfirmationContent({
         {/* Digital Ticket Pass Card */}
         <div className="bg-card border border-border rounded-3xl overflow-hidden shadow-2xl">
           <div className="p-6 md:p-8 border-b border-border flex flex-col md:flex-row items-start md:items-center gap-6 bg-gradient-to-br from-card to-background">
-            <img
-              src={imageUrl}
-              alt={event?.name ?? 'Event promotional image'}
-              className="w-24 h-24 rounded-2xl object-cover border border-border shadow-md"
-            />
+            <div className="relative w-24 h-24 shrink-0">
+              <Image
+                src={imageUrl}
+                alt={event?.name ?? 'Event promotional image'}
+                fill
+                sizes="96px"
+                className="rounded-2xl object-cover border border-border shadow-md"
+                priority={true}
+              />
+            </div>
             <div className="space-y-1">
               <span className="text-[10px] font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2.5 py-0.5 rounded-md">
                 Mobile Entry Ticket

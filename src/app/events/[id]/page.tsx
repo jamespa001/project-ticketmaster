@@ -6,6 +6,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import EventLocation from '@/components/EventLocation';
 import AuthModal from '@/components/AuthModal';
+import Image from 'next/image';
 
 interface EventDetail {
   id: string;
@@ -282,11 +283,16 @@ export default function EventDetailPage({
           {/* Event Header Card */}
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="flex items-center gap-5">
-              <img
-                src={imageUrl}
-                alt={event?.name ?? 'Event promotional image'}
-                className="w-24 h-24 md:w-28 md:h-28 rounded-lg object-cover border border-border shadow-md"
-              />
+              <div className="relative w-24 h-24 md:w-28 md:h-28 shrink-0">
+                <Image
+                  src={imageUrl}
+                  alt={event?.name ?? 'Event promotional image'}
+                  fill
+                  sizes="(max-width: 768px) 96px, 112px"
+                  className="rounded-lg object-cover border border-border shadow-md"
+                  priority={true}
+                />
+              </div>{' '}
               <div>
                 <div className="flex items-center gap-3 mb-1.5 flex-wrap">
                   <h1 className="text-xl md:text-2xl font-extrabold text-foreground">

@@ -77,13 +77,30 @@ This application was engineered and audited to meet strict WCAG 2.1 AA accessibi
 
 ### axe DevTools Audit: Before & After
 
-| Before Accessibility Refactor                                                | After WCAG 2.1 AA Compliance                                     |
-| :--------------------------------------------------------------------------- | :--------------------------------------------------------------- |
-| ![axe DevTools Before](./public/screenshots/axeDev.before.png)               | ![axe DevTools After](./public/screenshots/axeDev.after.png)     |
-| _Identified contrast adjustments, missing icon labels, and focus ring gaps._ | _Zero errors or warnings — fully verified and production-ready._ |
+| Before Accessibility Refactor                                                | After WCAG 2.1 AA Compliance                                               |
+| :--------------------------------------------------------------------------- | :------------------------------------------------------------------------- |
+| ![axe DevTools Before](./public/screenshots/Accessibility.axeDev.before.png) | ![axe DevTools After](./public/screenshots/Accessibility.axeDev.after.png) |
+| _Identified contrast adjustments, missing icon labels, and focus ring gaps._ | _Zero errors or warnings — fully verified and production-ready._           |
 
 ### Lighthouse Accessibility Score
 
 <p align="center">
-  <img src="./public/screenshots/Lighthouse.after.png" alt="Ticketmaster Lighthouse Accessibility Score 100 percent" width="600" />
+  <img src="./public/screenshots/Accessibility.Lighthouse.after.png" alt="Ticketmaster Lighthouse Accessibility Score 100 percent" width="600" />
 </p>
+
+### 🚀 Core Web Vitals & Performance Optimization
+
+By systematically refactoring legacy HTML `<img>` tags to Next.js's optimized `<Image />` component, configuring proper image sizing, setting up `remotePatterns` for CDN assets, and utilizing priority loading for hero views, we achieved dramatic performance gains.
+
+| Metric                             | Before Optimization | After Optimization | Improvement         |
+| :--------------------------------- | :------------------ | :----------------- | :------------------ |
+| **Lighthouse Score**               | **54**[cite: 1]     | **97**[cite: 3]    | **+43 Points** 🚀   |
+| **Largest Contentful Paint (LCP)** | **8.6 s**[cite: 1]  | **0.8 s**[cite: 3] | **10.7x Faster** ⚡ |
+| **First Contentful Paint (FCP)**   | **4.3 s**[cite: 1]  | **0.2 s**[cite: 3] | **21.5x Faster** ⚡ |
+
+#### Performance Audits
+
+- **Before Optimization (Score: 54):**  
+  ![Performance Before](./public/screenshots/Performance.Lighthouse.before.png)
+- **After Optimization (Score: 97):**  
+  ![Performance After](./public/screenshots/Performance.Lighthouse.after.png)
