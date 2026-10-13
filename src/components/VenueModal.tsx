@@ -60,14 +60,19 @@ export default function VenueModal({
             Venue Information
           </span>
           <h2 className="text-xl font-bold text-foreground mt-8">Location</h2>
-          <p className="text-sm text-muted-foreground mt-0.5">📍 {location}</p>
+          <p
+            className="text-sm text-muted-foreground mt-0.5"
+            aria-hidden={true}
+          >
+            📍 {location}
+          </p>
         </div>
 
         {/* Details Section */}
         <div className="space-y-4 text-sm text-muted-foreground border-t border-b border-border py-4 my-2">
           <div>
             <h4 className="font-semibold text-foreground mb-1">
-              🚗 Parking & Transportation
+              <span aria-hidden="true">🚗 </span>Parking & Transportation
             </h4>
             <p className="text-xs text-muted-foreground">
               {venue?.parkingDetail ||
@@ -85,7 +90,7 @@ export default function VenueModal({
           </div>
           <div>
             <h4 className="font-semibold text-foreground mb-1">
-              🚪 Doors Open
+              <span aria-hidden="true">🚪 </span>Doors Open
             </h4>
             <p className="text-xs text-muted-foreground">
               {venue?.boxOfficeInfo?.openHours ||
@@ -102,14 +107,15 @@ export default function VenueModal({
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex-1 bg-primary text-indigo-400 font-bold hover:bg-primary/90 text-center py-2.5 rounded-xl transition text-sm flex items-center justify-center gap-2"
+            className="group flex-1 bg-primary text-indigo-400 font-bold hover:bg-primary/90 text-center py-2.5 rounded-xl transition text-sm flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
           >
-            <span>🗺</span>
+            <span aria-hidden="true">🗺</span>
             <span className="group-hover:underline">Open in Google Maps</span>
           </a>
           <button
+            type="button"
             onClick={onClose}
-            className="px-5 bg-muted hover:bg-muted/80 text-foreground font-medium py-2.5 rounded-xl transition text-sm"
+            className="px-5 bg-muted hover:bg-muted/80 text-foreground font-medium py-2.5 rounded-xl transition text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
           >
             Close
           </button>

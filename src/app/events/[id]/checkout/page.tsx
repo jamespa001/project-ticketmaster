@@ -179,15 +179,18 @@ function CheckoutContent({ params }: { params: Promise<{ id: string }> }) {
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <Link
             href={`/events/${id}`}
-            className="text-xs text-muted-foreground hover:text-foreground transition flex items-center gap-1"
+            className="text-xs text-muted-foreground hover:text-foreground transition flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-primary/50 rounded px-1 py-0.5"
           >
-            ← Back to Event Seats
+            <span aria-hidden="true">←</span> Back to Event Seats
           </Link>
           <div className="flex items-center gap-3">
-            <span className="text-xs text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full font-mono flex items-center gap-1.5 animate-pulse">
-              ⏱️ Time remaining:{' '}
+            <div
+              className="text-xs text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full font-mono flex items-center gap-1.5 animate-pulse"
+              aria-live="polite"
+            >
+              <span aria-hidden="true">⏱️</span> Time remaining:{' '}
               <strong className="font-bold">{formatTime(timeLeft)}</strong>
-            </span>
+            </div>
             <span className="text-xs font-mono bg-primary/10 text-primary border border-primary/20 px-3 py-1 rounded-full hidden sm:inline-block">
               Secure Checkout Review
             </span>
@@ -251,6 +254,7 @@ function CheckoutContent({ params }: { params: Promise<{ id: string }> }) {
               <div className="flex items-center gap-3 bg-card border border-border px-3 py-1.5 rounded-xl">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  aria-label="Decrease ticket quantity"
                   className="w-7 h-7 rounded-lg bg-muted hover:bg-muted/80 text-foreground font-bold flex items-center justify-center transition cursor-pointer"
                 >
                   -
@@ -260,6 +264,7 @@ function CheckoutContent({ params }: { params: Promise<{ id: string }> }) {
                 </span>
                 <button
                   onClick={() => setQuantity(Math.min(8, quantity + 1))}
+                  aria-label="Increase ticket quantity"
                   className="w-7 h-7 rounded-lg bg-muted hover:bg-muted/80 text-foreground font-bold flex items-center justify-center transition cursor-pointer"
                 >
                   +
@@ -268,7 +273,7 @@ function CheckoutContent({ params }: { params: Promise<{ id: string }> }) {
             </div>
 
             <div className="text-xs text-muted-foreground flex items-center gap-2 bg-primary/10 border border-primary/20 p-3 rounded-xl text-primary">
-              <span>🎟️</span>
+              <span aria-hidden="true">🎟️</span>
               <span>
                 Tickets will be delivered instantly to your account digital
                 wallet upon successful checkout.

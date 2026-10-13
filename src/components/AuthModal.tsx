@@ -66,6 +66,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
       <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8 relative animate-in fade-in zoom-in duration-200">
         <button
           onClick={onClose}
+          aria-label="Close modal"
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold cursor-pointer"
         >
           ✕
@@ -93,7 +94,12 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
           disabled={loading}
           className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium py-2.5 rounded-lg transition shadow-sm cursor-pointer disabled:opacity-50 mb-4"
         >
-          <svg className="w-5 h-5" viewBox="0 0 24 24">
+          <svg
+            className="w-5 h-5"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
             <path
               fill="#4285F4"
               d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"
@@ -126,6 +132,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
               Email Address
             </label>
             <input
+              id="checkout-email-input"
               type="email"
               required
               value={email}
@@ -141,6 +148,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
               Password
             </label>
             <input
+              id="auth-password-input"
               type="password"
               required
               value={password}

@@ -80,7 +80,7 @@ describe('[P1] Header Component', () => {
     await user.click(themeButton);
 
     // Select Light theme
-    const lightThemeOption = screen.getByRole('button', { name: /light/i });
+    const lightThemeOption = screen.getByRole('button', { name: /^Light$/ });
     expect(lightThemeOption).toBeInTheDocument();
 
     await user.click(lightThemeOption);

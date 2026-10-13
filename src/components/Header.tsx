@@ -90,38 +90,41 @@ export default function Header() {
           <div className="flex items-center gap-3 sm:gap-8">
             <Link
               href="/"
-              className="text-lg sm:text-xl font-extrabold tracking-tight flex items-center mr-1 sm:mr-0"
+              className="text-lg sm:text-xl font-extrabold tracking-tight flex items-center mr-1 sm:mr-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded"
             >
               <span className="text-blue-600 dark:text-blue-400">
                 ticketmaster
               </span>
               <span className="text-foreground">.clone</span>
             </Link>
-            <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
+            <nav
+              aria-label="Main Navigation"
+              className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground"
+            >
               <Link
                 href="/?category=Music"
-                className="hover:text-foreground transition"
+                className="hover:text-foreground transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded"
               >
                 Concerts
               </Link>
               <Link
                 href="/?category=Sports"
-                className="hover:text-foreground transition"
+                className="hover:text-foreground transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded"
               >
                 Sports
               </Link>
               <Link
                 href="/?category=Arts+%26+Theatre"
-                className="hover:text-foreground transition"
+                className="hover:text-foreground transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded"
               >
                 Arts & Theater
               </Link>
               {isAdmin && (
                 <Link
                   href="/admin"
-                  className="text-sky-500 hover:text-sky-400 font-semibold transition flex items-center gap-1.5 px-2 py-1 bg-sky-500/10 rounded-lg border border-sky-500/20"
+                  className="text-sky-500 hover:text-sky-400 font-semibold transition flex items-center gap-1.5 px-2 py-1 bg-sky-500/10 rounded-lg border border-sky-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/50"
                 >
-                  <span>⚙️</span> Admin
+                  <span aria-hidden="true">⚙️</span> Admin
                 </Link>
               )}
             </nav>
@@ -131,11 +134,19 @@ export default function Header() {
             <div className="relative" ref={themeDropdownRef}>
               <button
                 onClick={() => setThemeDropdownOpen(!themeDropdownOpen)}
-                className="p-2.5 rounded-xl bg-card border border-border text-muted-foreground hover:text-foreground hover:bg-accent transition flex items-center justify-center cursor-pointer focus:outline-none shadow-sm"
+                aria-label={
+                  theme === 'dark'
+                    ? 'Switch to light theme'
+                    : 'Switch to dark theme'
+                }
+                aria-expanded={themeDropdownOpen}
+                className="p-2.5 rounded-xl bg-card border border-border text-muted-foreground hover:text-foreground hover:bg-accent transition flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 shadow-sm"
                 title="Change theme"
               >
                 {theme === 'dark' ? (
                   <svg
+                    aria-hidden="true"
+                    focusable="false"
                     className="w-4 h-4 text-primary"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -150,6 +161,8 @@ export default function Header() {
                   </svg>
                 ) : (
                   <svg
+                    aria-hidden="true"
+                    focusable="false"
                     className="w-4 h-4 text-amber-500"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -179,7 +192,7 @@ export default function Header() {
                           : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
                       }`}
                     >
-                      <span>☀️</span> Light
+                      <span aria-hidden="true">☀️</span> Light
                     </button>
                     <button
                       onClick={() => handleThemeSelect('dark')}
@@ -189,7 +202,7 @@ export default function Header() {
                           : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
                       }`}
                     >
-                      <span>🌙</span> Dark
+                      <span aria-hidden="true">🌙</span> Dark
                     </button>
                   </div>
                 </div>
@@ -200,7 +213,9 @@ export default function Header() {
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-emerald-500 text-primary-foreground font-bold flex items-center justify-center transition shadow-md cursor-pointer border-2 border-border hover:border-primary hover:ring-4 hover:ring-primary/20 text-sm focus:outline-none"
+                  aria-label={`User account menu for ${user.email || 'User'}`}
+                  aria-expanded={dropdownOpen}
+                  className="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-emerald-500 text-primary-foreground font-bold flex items-center justify-center transition shadow-md cursor-pointer border-2 border-border hover:border-primary hover:ring-4 hover:ring-primary/20 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
                   title={user.email || 'Account'}
                 >
                   {firstLetter}
@@ -228,7 +243,7 @@ export default function Header() {
                         onClick={() => setDropdownOpen(false)}
                         className="w-full text-left px-3 py-2.5 text-xs text-foreground hover:bg-accent hover:text-accent-foreground rounded-lg flex items-center gap-2.5 transition"
                       >
-                        <span>🎟</span> My Profile
+                        <span aria-hidden="true">🎟</span> My Profile
                       </Link>
                       {isAdmin && (
                         <Link
@@ -236,7 +251,7 @@ export default function Header() {
                           onClick={() => setDropdownOpen(false)}
                           className="w-full text-left px-3 py-2.5 text-xs text-sky-400 hover:bg-sky-500/10 rounded-lg flex items-center gap-2.5 transition font-semibold"
                         >
-                          <span>⚙️</span> Admin Dashboard
+                          <span aria-hidden="true">⚙️</span> Admin Dashboard
                         </Link>
                       )}
                     </div>
@@ -249,7 +264,7 @@ export default function Header() {
                         }}
                         className="w-full text-left px-3 py-2.5 text-xs text-red-500 hover:bg-red-500/10 rounded-lg flex items-center gap-2.5 transition cursor-pointer"
                       >
-                        <span>🚪</span> Sign Out
+                        <span aria-hidden="true">🚪</span> Sign Out
                       </button>
                     </div>
                   </div>
@@ -258,7 +273,7 @@ export default function Header() {
             ) : (
               <button
                 onClick={() => setIsAuthModalOpen(true)}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-5 py-2 rounded-xl text-sm font-medium transition shadow-sm shadow-primary/25 cursor-pointer whitespace-nowrap"
+                className="text-muted-foreground hover:text-foreground text-sm font-medium transition px-3 py-2 rounded-xl cursor-pointer whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               >
                 Sign In
               </button>
@@ -268,10 +283,14 @@ export default function Header() {
             <button
               ref={mobileButtonRef}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 rounded-xl bg-card border border-border text-muted-foreground hover:text-foreground hover:bg-accent transition flex items-center justify-center cursor-pointer focus:outline-none shadow-sm"
+              aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
+              className="md:hidden p-2.5 rounded-xl bg-card border border-border text-muted-foreground hover:text-foreground hover:bg-accent transition flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 shadow-sm"
               title="Toggle menu"
             >
               <svg
+                aria-hidden="true"
+                focusable="false"
                 className="w-5 h-5"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -303,27 +322,30 @@ export default function Header() {
             ref={mobileMenuRef}
             className="md:hidden absolute top-16 left-0 w-full bg-card/95 backdrop-blur-md border-b border-border shadow-2xl py-4 px-6 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
           >
-            <nav className="flex flex-col space-y-2 font-medium text-sm">
+            <nav
+              aria-label="Mobile Navigation"
+              className="flex flex-col space-y-2 font-medium text-sm"
+            >
               <Link
                 href="/?category=Music"
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-muted-foreground hover:text-foreground hover:bg-accent px-4 py-2.5 rounded-xl transition flex items-center gap-3"
               >
-                <span>🎸</span> Concerts
+                <span aria-hidden="true">🎸</span> Concerts
               </Link>
               <Link
                 href="/?category=Sports"
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-muted-foreground hover:text-foreground hover:bg-accent px-4 py-2.5 rounded-xl transition flex items-center gap-3"
               >
-                <span>🏀</span> Sports
+                <span aria-hidden="true">🏀</span> Sports
               </Link>
               <Link
                 href="/?category=Arts+%26+Theatre"
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-muted-foreground hover:text-foreground hover:bg-accent px-4 py-2.5 rounded-xl transition flex items-center gap-3"
               >
-                <span>🎭</span> Arts & Theater
+                <span aria-hidden="true">🎭</span> Arts & Theater
               </Link>
 
               {isAdmin && (
@@ -332,7 +354,7 @@ export default function Header() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-sky-400 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/20 px-4 py-2.5 rounded-xl transition flex items-center gap-3 font-semibold"
                 >
-                  <span>⚙️</span> Admin Dashboard
+                  <span aria-hidden="true">⚙️</span> Admin Dashboard
                 </Link>
               )}
             </nav>

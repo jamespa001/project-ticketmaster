@@ -35,12 +35,12 @@ export function EventCard({ event }: EventCardProps) {
   return (
     <Link
       href={`/events/${event.id}`}
-      className="bg-card border border-border hover:border-primary/50 shadow-md hover:shadow-xl rounded-2xl overflow-hidden transition group flex flex-col cursor-pointer"
+      className="bg-card border border-border hover:border-primary/50 shadow-md hover:shadow-xl rounded-2xl overflow-hidden transition group flex flex-col cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
     >
       <div className="relative h-48 overflow-hidden bg-muted">
         <img
           src={imageUrl}
-          alt={event.name}
+          alt={event?.name ?? 'Event image'}
           className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
         />
         <div className="absolute top-3 right-3 bg-background/80 backdrop-blur-md border border-border text-[10px] font-bold px-2.5 py-1 rounded-full text-primary">
@@ -50,20 +50,22 @@ export function EventCard({ event }: EventCardProps) {
 
       <div className="p-5 flex flex-col flex-grow justify-between space-y-4">
         <div className="space-y-1.5">
-          <p className="text-[11px] font-mono text-primary font-semibold">
-            📅 {event.dates?.start?.localDate || 'Date TBA'}
+          <p className="text-[11px] font-mono text-primary font-semibold flex items-center gap-1">
+            <span aria-hidden="true">📅</span>{' '}
+            {event.dates?.start?.localDate || 'Date TBA'}
           </p>
           <h3 className="text-sm font-bold text-foreground group-hover:text-primary transition line-clamp-2">
             {event.name}
           </h3>
-          <p className="text-xs text-muted-foreground line-clamp-1">
-            📍 {venue?.name || 'Venue TBA'}, {venue?.city?.name || ''}
+          <p className="text-xs text-muted-foreground line-clamp-1 flex items-center gap-1">
+            <span aria-hidden="true">📍</span> {venue?.name || 'Venue TBA'},{' '}
+            {venue?.city?.name || ''}
           </p>
         </div>
 
         <div className="pt-3 border-t border-border flex items-center justify-between text-xs font-bold text-primary group-hover:translate-x-1 transition">
           <span>View Tickets & Seats</span>
-          <span>→</span>
+          <span aria-hidden="true">→</span>
         </div>
       </div>
     </Link>

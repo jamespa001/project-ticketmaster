@@ -27,7 +27,11 @@ export default function EventLocation({
 
   return (
     <>
-      {showIcon && <span className="text-[11px]">📍</span>}
+      {showIcon && (
+        <span className="text-[11px]" aria-hidden={true}>
+          📍
+        </span>
+      )}
       <button
         type="button"
         onClick={(e) => {

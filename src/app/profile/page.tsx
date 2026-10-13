@@ -73,7 +73,7 @@ export default function ProfilePage() {
         </p>
         <Link
           href="/"
-          className="bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-3 rounded-xl transition text-sm"
+          className="bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-3 rounded-xl transition text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
         >
           Back to Home
         </Link>
@@ -88,9 +88,9 @@ export default function ProfilePage() {
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <Link
             href="/"
-            className="text-xs text-muted-foreground hover:text-foreground transition flex items-center gap-1"
+            className="text-xs text-muted-foreground hover:text-foreground transition flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-primary/50 rounded px-1 py-0.5"
           >
-            ← Back to Home
+            <span aria-hidden="true">←</span> Back to Home
           </Link>
           <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full uppercase tracking-wider">
             Account Dashboard
@@ -115,7 +115,7 @@ export default function ProfilePage() {
         {/* Preferences / Settings Section */}
         <div className="bg-card border border-muted rounded-3xl p-6 md:p-8 space-y-4 shadow-xl">
           <h2 className="text-base font-bold flex items-center gap-2">
-            <span>⚙️</span> Preferences & Appearance
+            <span aria-hidden={true}>⚙️</span> Preferences & Appearance
           </h2>
           <p className="text-xs text-muted-foreground">
             Choose your preferred theme. Changes are instantly saved to your
@@ -131,7 +131,9 @@ export default function ProfilePage() {
                   : 'bg-muted/50 border-muted hover:border-muted-foreground text-muted-foreground hover:text-foreground'
               }`}
             >
-              <span className="text-xl">☀️</span>
+              <span className="text-xl" aria-hidden="true">
+                ☀️
+              </span>
               <div>
                 <p className="text-sm font-bold">Light</p>
                 <p className="text-[10px] opacity-80">Clean bright look</p>
@@ -146,7 +148,9 @@ export default function ProfilePage() {
                   : 'bg-muted/50 border-muted hover:border-muted-foreground text-muted-foreground hover:text-foreground'
               }`}
             >
-              <span className="text-xl">🌙</span>
+              <span className="text-xl" aria-hidden={true}>
+                🌙
+              </span>
               <div>
                 <p className="text-sm font-bold">Dark</p>
                 <p className="text-[10px] opacity-80">Easy on the eyes</p>
@@ -159,7 +163,8 @@ export default function ProfilePage() {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-bold flex items-center gap-2">
-              <span>🎟</span> My Digital Tickets ({tickets.length})
+              <span aria-hidden={true}>🎟</span> My Digital Tickets (
+              {tickets.length})
             </h2>
           </div>
 
@@ -176,7 +181,7 @@ export default function ProfilePage() {
               <div className="pt-2">
                 <Link
                   href="/"
-                  className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-2.5 rounded-xl transition text-xs"
+                  className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-2.5 rounded-xl transition text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                 >
                   Explore Events
                 </Link>
@@ -192,7 +197,7 @@ export default function ProfilePage() {
                   <div className="flex items-center gap-4">
                     <img
                       src={ticket.image || 'https://via.placeholder.com/150'}
-                      alt={ticket.eventName}
+                      alt={ticket?.eventName ?? 'Ticket thumbnail'}
                       className="w-16 h-16 rounded-xl object-cover border border-muted"
                     />
                     <div className="space-y-1">
@@ -202,8 +207,8 @@ export default function ProfilePage() {
                       <h3 className="text-base font-bold">
                         {ticket.eventName}
                       </h3>
-                      <p className="text-xs text-muted-foreground">
-                        📅{' '}
+                      <p className="text-xs text-muted-foreground flex items-center gap-1">
+                        <span aria-hidden="true">📅</span>{' '}
                         {ticket.eventDate
                           ? new Date(ticket.eventDate).toLocaleDateString(
                               'en-US',
@@ -214,15 +219,16 @@ export default function ProfilePage() {
                               },
                             )
                           : 'Date TBA'}{' '}
-                        • 📍 {ticket.venueName}, {ticket.city}
+                        <span aria-hidden="true">• 📍</span> {ticket.venueName},{' '}
+                        {ticket.city}
                       </p>
                     </div>
                   </div>
                   <Link
                     href={`/tickets/${ticket.eventId}?session_id=${ticket.sessionId}`}
-                    className="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-bold px-5 py-2.5 rounded-xl transition text-xs text-center shadow-lg shadow-blue-600/20"
+                    className="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-bold px-5 py-2.5 rounded-xl transition text-xs text-center shadow-lg shadow-blue-600/20 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                   >
-                    View Digital Pass →
+                    View Digital Pass <span aria-hidden="true">→</span>
                   </Link>
                 </div>
               ))}

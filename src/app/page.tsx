@@ -118,9 +118,12 @@ function HomeContent() {
             className="bg-card border border-border shadow-xl p-2 sm:p-3 rounded-2xl max-w-3xl mx-auto flex flex-col sm:flex-row items-center gap-2"
           >
             <div className="flex items-center gap-2 px-3 py-2 w-full sm:w-1/2 border-b sm:border-b-0 sm:border-r border-border">
-              <span className="text-muted-foreground">🔍</span>
+              <span className="text-muted-foreground" aria-hidden={true}>
+                🔍
+              </span>
               <input
                 type="text"
+                aria-label="Search artist, team, event, or show"
                 placeholder="Search artist, team, event, or show..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -129,9 +132,12 @@ function HomeContent() {
             </div>
 
             <div className="flex items-center gap-2 px-3 py-2 w-full sm:w-1/3">
-              <span className="text-muted-foreground">📍</span>
+              <span className="text-muted-foreground" aria-hidden={true}>
+                📍
+              </span>
               <input
                 type="text"
+                aria-label="Enter city, e.g. Tampa, Orlando"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Enter city (e.g. Tampa, Orlando)..."
@@ -141,7 +147,7 @@ function HomeContent() {
 
             <button
               type="submit"
-              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-6 py-3 rounded-xl transition cursor-pointer text-sm shadow-lg shadow-primary/25"
+              className="w-full sm:w-auto text-muted-foreground hover:text-foreground font-medium px-6 py-3 rounded-xl transition cursor-pointer text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
             >
               Search
             </button>
@@ -160,7 +166,7 @@ function HomeContent() {
                     : 'bg-card text-muted-foreground border-border hover:bg-accent hover:text-accent-foreground'
                 }`}
               >
-                <span>{cat.icon}</span>
+                <span aria-hidden="true">{cat.icon}</span>
                 <span>{cat.name}</span>
               </button>
             ))}
@@ -199,7 +205,9 @@ function HomeContent() {
           </div>
         ) : events.length === 0 ? (
           <div className="text-center py-20 bg-card border border-border rounded-3xl shadow-sm">
-            <span className="text-4xl block mb-2">🏟</span>
+            <span className="text-4xl block mb-2" aria-hidden="true">
+              🏟
+            </span>
             <h3 className="text-lg font-bold text-foreground">
               No events found
             </h3>

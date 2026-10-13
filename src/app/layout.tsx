@@ -3,6 +3,13 @@ import { ThemeProvider } from '@/context/ThemeContext';
 import { ThemeListener } from '@/components/ThemeListener';
 import Header from '@/components/Header';
 import './globals.css';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Ticketmaster Clone | Live Events & Concert Tickets',
+  description:
+    'Find concerts, sports, theater, and world-class tours with verified tickets.',
+};
 
 export default function RootLayout({
   children,

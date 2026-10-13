@@ -206,13 +206,13 @@ export default function EventDetailPage({
   if (error || !event) {
     return (
       <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-6 text-center">
-        <h2 className="text-2xl font-bold mb-2">Event Not Found</h2>
+        <h1 className="text-2xl font-bold mb-2">Event Not Found</h1>
         <p className="text-muted-foreground mb-6">
           {error || 'This event could not be retrieved.'}
         </p>
         <Link
           href="/"
-          className="bg-primary text-primary-foreground px-6 py-2.5 rounded-lg font-medium hover:bg-primary/90 transition"
+          className="bg-primary text-primary-foreground px-6 py-2.5 rounded-lg font-medium hover:bg-primary/90 transition focus:outline-none focus:ring-2 focus:ring-primary/50"
         >
           Back to Search
         </Link>
@@ -245,24 +245,46 @@ export default function EventDetailPage({
       <div className="bg-card text-card-foreground border-b border-border px-6 py-4">
         <div className="max-w-7xl mx-auto">
           {/* Breadcrumbs */}
-          <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
-            <Link href="/" className="hover:text-foreground transition">
-              Home
-            </Link>
-            <span>/</span>
-            <span>{segmentName}</span>
-            <span>/</span>
-            <span>{genreName}</span>
-            <span>/</span>
-            <span className="text-primary truncate max-w-xs">{event.name}</span>
-          </div>
+          <nav aria-label="Breadcrumb" className="mb-4">
+            <ol className="flex items-center gap-2 text-xs text-muted-foreground">
+              <li>
+                <Link
+                  href="/"
+                  className="hover:text-foreground transition focus:outline-none focus:ring-2 focus:ring-primary/50 rounded px-1"
+                >
+                  Home
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <span className="hover:text-foreground transition cursor-default">
+                  {segmentName}
+                </span>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <span className="hover:text-foreground transition cursor-default">
+                  {genreName}
+                </span>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <span
+                  className="text-primary truncate max-w-xs font-medium"
+                  aria-current="page"
+                >
+                  {event.name}
+                </span>
+              </li>
+            </ol>
+          </nav>
 
           {/* Event Header Card */}
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="flex items-center gap-5">
               <img
                 src={imageUrl}
-                alt={event.name}
+                alt={event?.name ?? 'Event promotional image'}
                 className="w-24 h-24 md:w-28 md:h-28 rounded-lg object-cover border border-border shadow-md"
               />
               <div>
@@ -272,10 +294,10 @@ export default function EventDetailPage({
                   </h1>
                   <div className="flex items-center gap-2">
                     <span className="text-xs bg-muted hover:bg-muted/80 text-foreground border border-border px-3 py-1 rounded-full font-medium transition cursor-not-allowed flex items-center gap-1">
-                      ℹ More Info
+                      <span aria-hidden={true}>ℹ</span> More Info
                     </span>
                     <span className="text-xs bg-muted hover:bg-muted/80 text-foreground border border-border px-3 py-1 rounded-full font-medium transition cursor-not-allowed flex items-center gap-1">
-                      ♿ Accessible Tickets
+                      <span aria-hidden={true}>♿</span> Accessible Tickets
                     </span>
                   </div>
                 </div>
@@ -397,7 +419,11 @@ export default function EventDetailPage({
                                   : 'border-border'
                               }`}
                             >
-                              {isSelected && <span className="text-xs">✓</span>}
+                              {isSelected && (
+                                <span className="text-xs" aria-hidden="true">
+                                  ✓
+                                </span>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -434,6 +460,7 @@ export default function EventDetailPage({
                 Ticket Quantity
               </label>
               <select
+                id="ticket-quantity-select"
                 value={ticketCount}
                 onChange={(e) => setTicketCount(Number(e.target.value))}
                 className="w-full px-4 py-2.5 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary text-foreground text-sm"

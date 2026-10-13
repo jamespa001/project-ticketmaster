@@ -184,6 +184,7 @@ export default function AdminDashboard() {
                 Email
               </label>
               <input
+                id="email-input"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -196,6 +197,7 @@ export default function AdminDashboard() {
                 Password
               </label>
               <input
+                id="password-input"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -216,7 +218,7 @@ export default function AdminDashboard() {
           <div className="mt-6 text-center">
             <a
               href="/"
-              className="text-xs text-gray-400 hover:text-white transition-colors"
+              className="text-xs text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 rounded px-1 py-0.5"
             >
               ← Return to Home
             </a>
@@ -349,6 +351,7 @@ export default function AdminDashboard() {
                     </h2>
                   </div>
                   <span
+                    aria-hidden="true"
                     className={`transform transition-transform duration-200 text-gray-400 shrink-0 ml-2 ${isOpen ? 'rotate-180' : ''}`}
                   >
                     ▼

@@ -86,14 +86,14 @@ function SuccessContent() {
           {eventId && (
             <Link
               href={`/tickets/${eventId}?session_id=${sessionId || 'success'}`}
-              className="w-full block text-center bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 rounded-xl transition shadow-lg shadow-primary/20 text-sm"
+              className="w-full block text-center bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 rounded-xl transition shadow-lg shadow-primary/20 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
             >
               View Digital Tickets & Pass
             </Link>
           )}
           <Link
             href="/"
-            className="w-full block text-center bg-secondary hover:bg-secondary/80 text-secondary-foreground font-medium py-3 rounded-xl transition text-sm"
+            className="w-full block text-center bg-secondary hover:bg-secondary/80 text-secondary-foreground font-medium py-3 rounded-xl transition text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
           >
             Browse More Events
           </Link>

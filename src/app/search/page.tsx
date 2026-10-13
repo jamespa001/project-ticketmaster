@@ -152,6 +152,7 @@ function EventSearchContent() {
               <div className="relative flex items-center">
                 <Search className="absolute left-3.5 w-4 h-4 text-muted-foreground" />
                 <input
+                  id="search-keyword-input"
                   type="text"
                   value={keyword}
                   onChange={(e) => setKeyword(e.target.value)}
@@ -169,6 +170,7 @@ function EventSearchContent() {
               <div className="relative flex items-center">
                 <MapPin className="absolute left-3.5 w-4 h-4 text-muted-foreground" />
                 <input
+                  id="city-input"
                   type="text"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
@@ -232,8 +234,8 @@ function EventSearchContent() {
               No events found
             </h3>
             <p className="text-muted-foreground text-sm mb-6">
-              We couldn't find any events matching your criteria. Try adjusting
-              your filters or search terms.
+              We couldn&apos;t find any events matching your criteria. Try
+              adjusting your filters or search terms.
             </p>
             <button
               onClick={() => {
@@ -266,7 +268,7 @@ function EventSearchContent() {
                         event.images?.[0]?.url ||
                         'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80'
                       }
-                      alt={event.name}
+                      alt={event?.name ?? 'Event promotional image'}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-80" />
@@ -288,7 +290,7 @@ function EventSearchContent() {
                   <div className="p-5 flex-1 flex flex-col justify-between">
                     <div>
                       <div className="flex items-center gap-2 text-xs font-medium text-blue-400 mb-2">
-                        <Calendar className="w-3.5 h-3.5" />
+                        <Calendar className="w-3.5 h-3.5" aria-hidden="true" />
                         <span>
                           {event.dates.start.localDate}{' '}
                           {event.dates.start.localTime
@@ -317,10 +319,14 @@ function EventSearchContent() {
                       </span>
                       <Link
                         href={`/tickets/${event.id}`}
-                        className="px-4 py-2 bg-blue-600/10 hover:bg-blue-600 border border-blue-500/30 hover:border-transparent text-blue-400 hover:text-white text-xs font-semibold rounded-xl transition-all duration-200 flex items-center gap-1.5 group/btn"
+                        className="px-4 py-2 bg-blue-600/10 hover:bg-blue-600 border border-blue-500/30 hover:border-transparent text-blue-400 hover:text-white text-xs font-semibold rounded-xl transition-all duration-200 flex items-center gap-1.5 group/btn focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                       >
                         View Seats
-                        <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
+                        <ArrowRight
+                          aria-hidden="true"
+                          focusable="false"
+                          className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform"
+                        />
                       </Link>
                     </div>
                   </div>

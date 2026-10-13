@@ -130,9 +130,9 @@ function TicketConfirmationContent({
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <Link
             href="/"
-            className="text-xs text-muted-foreground hover:text-foreground transition flex items-center gap-1"
+            className="text-xs text-muted-foreground hover:text-foreground transition flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-primary/50 rounded px-1 py-0.5"
           >
-            ← Back to Home
+            <span aria-hidden="true">←</span> Back to Home
           </Link>
           <div className="flex items-center gap-3">
             <span className="text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5">
@@ -165,7 +165,7 @@ function TicketConfirmationContent({
           <div className="p-6 md:p-8 border-b border-border flex flex-col md:flex-row items-start md:items-center gap-6 bg-gradient-to-br from-card to-background">
             <img
               src={imageUrl}
-              alt={event?.name}
+              alt={event?.name ?? 'Event promotional image'}
               className="w-24 h-24 rounded-2xl object-cover border border-border shadow-md"
             />
             <div className="space-y-1">
@@ -245,7 +245,7 @@ function TicketConfirmationContent({
           <div className="p-8 flex flex-col items-center justify-center bg-card text-center space-y-4 relative overflow-hidden">
             <div className="flex items-center justify-between w-full max-w-sm px-2 text-xs font-mono text-muted-foreground">
               <span className="text-indigo-400 font-semibold flex items-center gap-1">
-                🛡️ SafeTix Active
+                <span aria-hidden="true">🛡️</span> SafeTix Active
               </span>
               <span>
                 Refreshes in{' '}
@@ -288,17 +288,17 @@ function TicketConfirmationContent({
               }
               className="flex-1 bg-muted hover:bg-muted/80 text-foreground font-medium py-3 rounded-xl transition text-xs flex items-center justify-center gap-2 cursor-not-allowed shadow-md"
             >
-              <span>📱</span> Add to Digital Wallet
+              <span aria-hidden={true}>📱</span> Add to Digital Wallet
             </button>
             <Link
               href="/profile"
-              className="flex-1 bg-muted hover:bg-muted/80 text-foreground font-medium py-3 rounded-xl transition text-xs flex items-center justify-center gap-2 text-center shadow-md"
+              className="flex-1 bg-muted hover:bg-muted/80 text-foreground font-medium py-3 rounded-xl transition text-xs flex items-center justify-center gap-2 text-center shadow-md focus:outline-none focus:ring-2 focus:ring-primary/50"
             >
-              <span>👤</span> View My Profile
+              <span aria-hidden={true}>👤</span> View My Profile
             </Link>
             <Link
               href="/"
-              className="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition text-xs flex items-center justify-center gap-2 text-center shadow-md shadow-indigo-600/20"
+              className="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition text-xs flex items-center justify-center gap-2 text-center shadow-md shadow-indigo-600/20 focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
             >
               Done
             </Link>
