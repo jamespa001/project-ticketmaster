@@ -1,3 +1,5 @@
+![Ticketmaster CI](https://github.com/jamespa001/project-ticketmaster/actions/workflows/ci.yml/badge.svg)
+
 ### [Ticketmaster Clone]
 
 A full-stack event discovery and ticketing platform inspired by Ticketmaster, built with Next.js App Router, Tailwind CSS, Firebase, and the Ticketmaster Discovery API.
