@@ -54,10 +54,12 @@ describe('[P1] EventCard Component', () => {
 
   it('renders the event image with correct attributes', () => {
     render(<EventCard event={mockEvent} />);
-
     const image = screen.getByRole('img', { name: /coldplay/i });
     expect(image).toBeInTheDocument();
-    expect(image).toHaveAttribute('src', mockEvent.images?.[0]?.url);
+
+    const imageUrl = mockEvent.images?.[0]?.url;
+    expect(imageUrl).toBeDefined();
+    expect(image.getAttribute('src')).toContain(encodeURIComponent(imageUrl!));
   });
 
   it('correctly sets the Next.js link href for event navigation', () => {

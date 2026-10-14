@@ -53,10 +53,6 @@ function EventSearchContent() {
     'Festival',
   ];
 
-  useEffect(() => {
-    fetchEvents(initialKeyword, initialCategory, initialCity);
-  }, [searchParams]);
-
   const fetchEvents = async (q: string, cat: string, c: string) => {
     setLoading(true);
     setError(null);
@@ -82,7 +78,9 @@ function EventSearchContent() {
               url: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80',
             },
           ],
-          dates: { start: { localDate: '2026-08-15', localTime: '19:30:00' } },
+          dates: {
+            start: { localDate: '2026-08-15', localTime: '19:30:00' },
+          },
           venues: [
             { name: 'MetLife Stadium', city: 'East Rutherford', state: 'NJ' },
           ],
@@ -98,7 +96,9 @@ function EventSearchContent() {
               url: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80',
             },
           ],
-          dates: { start: { localDate: '2026-06-18', localTime: '20:00:00' } },
+          dates: {
+            start: { localDate: '2026-06-18', localTime: '20:00:00' },
+          },
           venues: [{ name: 'TD Garden', city: 'Boston', state: 'MA' }],
           priceRanges: [{ min: 120, max: 1200, currency: 'USD' }],
           classifications: [{ genre: { name: 'Basketball' } }],
@@ -108,6 +108,10 @@ function EventSearchContent() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchEvents(initialKeyword, initialCategory, initialCity);
+  }, [searchParams]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();

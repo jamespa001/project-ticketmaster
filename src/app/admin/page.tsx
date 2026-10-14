@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { auth, db } from '@/lib/firebase';
 import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
+import Link from 'next/link';
 
 interface TestCase {
   fullName: string;
@@ -216,12 +217,12 @@ export default function AdminDashboard() {
           </form>
 
           <div className="mt-6 text-center">
-            <a
+            <Link
               href="/"
               className="text-xs text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 rounded px-1 py-0.5"
             >
               ← Return to Home
-            </a>
+            </Link>
           </div>
         </div>
       </main>

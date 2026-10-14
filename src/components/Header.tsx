@@ -37,6 +37,7 @@ export default function Header() {
           setIsAdmin(userDoc.exists() && userDoc.data()?.role === 'admin');
         }
       } catch (err) {
+        console.error('Failed to check admin role:', err);
         if (isMounted) setIsAdmin(false);
       }
     }
