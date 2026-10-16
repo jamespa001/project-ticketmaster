@@ -1,23 +1,49 @@
 ![Ticketmaster CI](https://github.com/jamespa001/project-ticketmaster/actions/workflows/ci.yml/badge.svg)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-000000?style=flat&logo=vercel&logoColor=white)](https://project-ticketmaster-59ml.vercel.app/)
 
-### [Ticketmaster Clone]
+# 🚀 Ticketmaster Clone (Event Discovery & Ticketing Platform)
 
-A full-stack event discovery and ticketing platform inspired by Ticketmaster, built with Next.js App Router, Tailwind CSS, Firebase, and the Ticketmaster Discovery API.
+[**🌐 View Live Platform**](https://project-ticketmaster-59ml.vercel.app/) | [**🛠️ GitHub Repository**](https://github.com/jamespa001/project-ticketmaster)
 
-### [Key Features]
+A full-stack event discovery and ticketing platform inspired by Ticketmaster, built with **Next.js App Router**, **TypeScript**, **Tailwind CSS**, **Firebase Auth & Firestore**, and the **Ticketmaster Discovery API**.
 
-- Event Discovery & Search: Real-time event search powered by the Ticketmaster Discovery API with robust keyword and location-based filtering.
-- Dynamic Event Details: Immersive event pages featuring date/time formatting, venue details, interactive order summaries, and deterministic pricing fallbacks.
-- Secure Authentication: User sign-in and session management powered by Firebase Authentication.
-- Seamless Checkout: End-to-end payment processing integrated with Stripe Checkout.
-- Responsive Architecture: Built mobile-first with a modern, high-converting two-column layout styled using Tailwind CSS.
+---
 
-### [Tech Stack]
+## 🛠️ Engineering Highlights & Architecture
 
-- Frontend & Framework: Next.js (App Router), React, Tailwind CSS
-- APIs & Services: Ticketmaster Discovery API, Stripe API
-- Backend & Auth: Firebase Auth & Firestore
-- Deployment: Vercel
+- **Problem & Context:** E-commerce event discovery platforms with high-density image catalogs often suffer from massive layout shift, slow initial page loads, and brittle checkout pipelines.
+- **Key Technical Decisions:**
+  - Integrated the **Ticketmaster Discovery API** with client-side query filtering and dynamic price fallbacks.
+  - Implemented secure user authentication and session management using **Firebase Auth**, coupled with **Stripe Checkout** redirect flows for secure payment processing.
+  - Engineered a role-based Admin Dashboard (`/admin`) that dynamically parses live Vitest JSON test execution artifacts (`public/reports/test-results/latest.json`) to monitor test health in real time.
+  - Replaced legacy `<img>` tags with Next.js optimized `<Image />` components using explicit dimensions and priority loading.
+- **Results & Metrics:**
+  - ⚡ **10.7x Faster LCP:** Reduced Largest Contentful Paint from **8.6s to 0.8s**.
+  - 🚀 **+43 Lighthouse Performance Boost:** Performance score jumped from **54 to 97**.
+  - ⚡ **21.5x Faster FCP:** First Contentful Paint improved from **4.3s down to 0.2s**.
+  - 🛡️ **100 Lighthouse Accessibility** score with zero axe DevTools violations (WCAG 2.1 AA compliant).
+
+---
+
+## ✨ Key Features
+
+- **Event Discovery & Search:** Real-time event search powered by the Ticketmaster Discovery API with robust keyword and location-based filtering.
+- **Dynamic Event Details:** Immersive event pages featuring date/time formatting, venue details, interactive order summaries, and deterministic pricing fallbacks.
+- **Secure Authentication:** User sign-in and session management powered by Firebase Authentication.
+- **Seamless Checkout:** End-to-end payment processing integrated with Stripe Checkout.
+- **Responsive Architecture:** Built mobile-first with a modern, high-converting two-column layout styled using Tailwind CSS.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend & Framework:** Next.js (App Router), React, Tailwind CSS
+- **APIs & Services:** Ticketmaster Discovery API, Stripe API
+- **Backend & Auth:** Firebase Auth & Firestore
+- **Testing:** Vitest, React Testing Library
+- **Deployment:** Vercel
+
+---
 
 ### 📁 Project Structure
 
@@ -44,6 +70,8 @@ src/
 └── test/                       # Test environment setup & global mocks
 ```
 
+---
+
 ### 🛡️ Admin Dashboard & Quality Monitoring
 
 The application features a secure, role-based Admin Dashboard (`/admin`) that parses live Vitest JSON test execution artifacts (`public/reports/test-results/latest.json`) to monitor build and test health in real time.
@@ -51,6 +79,8 @@ The application features a secure, role-based Admin Dashboard (`/admin`) that pa
 <p align="center">
   <img src="./public/screenshots/admin-dashboard.png" alt="Ticketmaster Admin Dashboard" width="900" style="border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.4);" />
 </p>
+
+---
 
 #### **Demo Admin Access**
 
@@ -60,9 +90,13 @@ To explore the admin features locally or in production, you can sign in using th
 - **Password**: `admin@tampa.FL`
 - **Security**: Enforces strict Firestore role verification (`users/{uid}` with `role: "admin"`), automatically redirecting unauthorized users.
 
+---
+
 ## ♿ Accessibility & Quality Assurance (WCAG 2.1 AA)
 
 This application was engineered and audited to meet strict WCAG 2.1 AA accessibility standards, ensuring full screen-reader support, keyboard navigation, and high-contrast usability across event search results, filtering tools, and interactive booking flows.
+
+---
 
 ### Audit Summary
 
@@ -84,11 +118,15 @@ This application was engineered and audited to meet strict WCAG 2.1 AA accessibi
 | ![axe DevTools Before](./public/screenshots/Accessibility.axeDev.before.png) | ![axe DevTools After](./public/screenshots/Accessibility.axeDev.after.png) |
 | _Identified contrast adjustments, missing icon labels, and focus ring gaps._ | _Zero errors or warnings — fully verified and production-ready._           |
 
+---
+
 ### Lighthouse Accessibility Score
 
 <p align="center">
   <img src="./public/screenshots/Accessibility.Lighthouse.after.png" alt="Ticketmaster Lighthouse Accessibility Score 100 percent" width="600" />
 </p>
+
+---
 
 ### 🚀 Core Web Vitals & Performance Optimization
 
@@ -99,6 +137,8 @@ By systematically refactoring legacy HTML `<img>` tags to Next.js's optimized `<
 | **Lighthouse Score**               | **54**[cite: 1]     | **97**[cite: 3]    | **+43 Points** 🚀   |
 | **Largest Contentful Paint (LCP)** | **8.6 s**[cite: 1]  | **0.8 s**[cite: 3] | **10.7x Faster** ⚡ |
 | **First Contentful Paint (FCP)**   | **4.3 s**[cite: 1]  | **0.2 s**[cite: 3] | **21.5x Faster** ⚡ |
+
+---
 
 #### Performance Audits
 
